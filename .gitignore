@@ -1,0 +1,17 @@
+# SQL exports
+milestone2.sql
+
+# Node dependencies
+node_modules
+cav-rideshare-web/node_modules
+cav-rideshare-api/node_modules
+
+# Build artifacts
+cav-rideshare-web/dist
+
+# Env files
+.env
+cav-rideshare-api/.env
+
+# Misc
+.DS_Store

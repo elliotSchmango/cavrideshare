@@ -1,0 +1,393 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top, rgba(35, 45, 75, 0.08) 0%, #ffffff 55%);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.brand {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.brand-subtitle {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.app-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.app-nav a {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.app-nav a:hover {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.app-main {
+  flex: 1;
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+
+.primary-btn {
+  align-self: flex-start;
+  background: var(--uva-blue);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease;
+  text-decoration: none;
+}
+
+.primary-btn:hover:enabled {
+  background: #101631;
+}
+
+.primary-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--uva-blue);
+  color: var(--uva-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(35, 45, 75, 0.08);
+}
+
+.home {
+  width: min(100%, 960px);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero-card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 20px 65px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(35, 45, 75, 0.08);
+  border-top: 6px solid var(--uva-orange);
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--uva-orange);
+  margin-bottom: 0.5rem;
+}
+
+.hero-card h1 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+}
+
+.hero-subtitle {
+  color: #4b5563;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.trip-form,
+.card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.trip-form h2 {
+  margin-top: 0;
+}
+
+.trip-form label,
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.trip-form input,
+.trip-form textarea,
+.login-form input,
+.login-form select {
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+.trip-form textarea {
+  resize: vertical;
+}
+
+.trip-table-wrapper {
+  overflow-x: auto;
+}
+
+.trip-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.trip-table th,
+.trip-table td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.trip-table th {
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid rgba(35, 45, 75, 0.2);
+  color: var(--uva-blue);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.ghost-btn.danger {
+  color: var(--uva-orange);
+  border-color: rgba(248, 76, 30, 0.35);
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.trip-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.filter-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.filter-row select,
+.filter-row input {
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.65rem;
+  border: 1px solid #d1d5db;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.status {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.status.success {
+  color: #1f905c;
+}
+
+.status.error {
+  color: var(--uva-orange);
+}
+
+.status.loading {
+  color: var(--uva-blue);
+}
+
+.login-page {
+  width: min(100%, 960px);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.login-form button {
+  margin-top: 1rem;
+}
+
+.token-card .token-preview {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  padding: 1rem;
+  background: #111827;
+  color: #f9fafb;
+  border-radius: 0.5rem;
+  word-break: break-all;
+}
+
+@media (max-width: 720px) {
+  .app-header,
+  .app-main {
+    padding: 1.5rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-card h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Enhanced UI: inputs, nav and profile/trip list styles */
+.app-nav a.active {
+  background: var(--uva-blue);
+  color: #fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(35, 45, 75, 0.06);
+  border-color: rgba(35, 45, 75, 0.18);
+}
+
+.profile-page {
+  width: min(100%, 960px);
+}
+
+.trip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.trip-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #e6eef8;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trip-header strong {
+  background: rgba(35, 45, 75, 0.06);
+  color: var(--uva-blue);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.trip-time {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.trip-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+  align-items: start;
+}
+
+.trip-body div {
+  color: #111827;
+}
+
+@media (max-width: 720px) {
+  .trip-body {
+    grid-template-columns: 1fr;
+  }
+}
