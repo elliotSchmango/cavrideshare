@@ -25,42 +25,44 @@ const getAllowedOrigins = () => {
     origins.push(...envOrigins)
   }
   
-  // Log warning in production if FRONTEND_ORIGIN is not set
-  if (process.env.NODE_ENV === 'production' && !process.env.FRONTEND_ORIGIN) {
-    console.warn('⚠️  WARNING: FRONTEND_ORIGIN environment variable is not set in production. CORS may fail.')
-    console.warn('   Set FRONTEND_ORIGIN in Vercel to your frontend URL (e.g., https://your-app.vercel.app)')
-  }
-  
   return origins.length > 0 ? origins : ['http://localhost:5173']
 }
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = getAllowedOrigins()
-      
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) {
-        return callback(null, true)
-      }
-      
-      // Check if the origin is in the allowed list
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true)
-      }
-      
-      // In production, if FRONTEND_ORIGIN is not set, allow Vercel domains as fallback
-      // This is a temporary workaround - you should set FRONTEND_ORIGIN properly
-      if (process.env.NODE_ENV === 'production' && !process.env.FRONTEND_ORIGIN) {
-        if (origin.includes('.vercel.app') || origin.includes('.vercel.sh')) {
-          console.warn(`⚠️  Allowing Vercel origin ${origin} - set FRONTEND_ORIGIN for better security`)
+      try {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) {
           return callback(null, true)
         }
+        
+        const allowedOrigins = getAllowedOrigins()
+        
+        // Check if the origin is in the allowed list
+        if (allowedOrigins.includes(origin)) {
+          return callback(null, true)
+        }
+        
+        // In production, if FRONTEND_ORIGIN is not set, allow Vercel domains as fallback
+        // This is a temporary workaround - you should set FRONTEND_ORIGIN properly
+        if (!process.env.FRONTEND_ORIGIN) {
+          if (origin.includes('.vercel.app') || origin.includes('.vercel.sh')) {
+            console.warn(`⚠️  Allowing Vercel origin ${origin} - set FRONTEND_ORIGIN for better security`)
+            return callback(null, true)
+          }
+        }
+        
+        // Reject the request
+        callback(null, false)
+      } catch (error) {
+        console.error('CORS error:', error)
+        callback(null, false)
       }
-      
-      callback(new Error('Not allowed by CORS'))
     },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   }),
 )
 app.use(express.json())
